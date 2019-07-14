@@ -1,0 +1,532 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>打死也要记住法则1：col</title>
+
+</head>
+<body>
+<h1>打死也要记住法则1：col</h1>
+
+<h1>打死也要记住法则2：select</h1>
+
+<p><code>SELECT</code> col,col,col 找什么？</p>
+
+<p> <code>FROM</code> table 从哪找？</p>
+
+<p> <code>WHERE</code> col 条件 条件是啥？</p>
+
+<h1>条件：数字(where)</h1>
+
+<p><code>当查找条件col是数字</code></p>
+
+<p><code>select * from table where col = 1</code>;</p>
+
+<table>
+<thead>
+<tr>
+<th> Operator   </th>
+<th align="center">      Condition      </th>
+<th align="right">  SQL Example </th>
+<th>解释   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> , !=, &lt; &lt;=, >, >= </td>
+<td align="center">  Standard numerical operators </td>
+<td align="right"> col != 4 </td>
+<td> 等于 大于 小于 </td>
+</tr>
+<tr>
+<td> BETWEEN … AND … </td>
+<td align="center">    Number is within range of two values (inclusive)   </td>
+<td align="right">   col BETWEEN 1.5 AND 10.5 </td>
+<td> 在 X 和 X之间</td>
+</tr>
+<tr>
+<td> NOT BETWEEN … AND … </td>
+<td align="center"> Number is not within range of two values (inclusive) </td>
+<td align="right">   co NOT BETWEEN 1 AND10 </td>
+<td>不在 X 和 X之间 </td>
+</tr>
+<tr>
+<td>IN (…) </td>
+<td align="center"> Number exists in a list </td>
+<td align="right"> col IN (2, 4, 6) </td>
+<td> 在 X 集合</td>
+</tr>
+<tr>
+<td>NOT IN (…)</td>
+<td align="center"> Number does not exist in a list</td>
+<td align="right"> col NOT IN (1, 3, 5)</td>
+<td> 不在 X 集合</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>条件：文本(where)</h1>
+
+<p><code>当查找条件col是文本</code></p>
+
+<p><code>select * from table where col like '%jin'</code>;</p>
+
+<table>
+<thead>
+<tr>
+<th> Operator   </th>
+<th align="center">      Condition      </th>
+<th align="right">  SQL Example </th>
+<th>解释   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> = </td>
+<td align="center">  Case sensitive exact string comparison (notice the single equals) </td>
+<td align="right"> col = "abc" </td>
+<td> 等于 </td>
+</tr>
+<tr>
+<td> != or &lt;> </td>
+<td align="center"> Case sensitive exact string inequality comparison </td>
+<td align="right"> col != "abcd" </td>
+<td> 不等于 </td>
+</tr>
+<tr>
+<td> LIKE </td>
+<td align="center"> Case insensitive exact string comparison </td>
+<td align="right"> col LIKE "ABC" </td>
+<td> 等于 </td>
+</tr>
+<tr>
+<td> NOT LIKE </td>
+<td align="center">Case insensitive exact string inequality comparison</td>
+<td align="right"> col NOT LIKE "ABCD"</td>
+<td> 不等于</td>
+</tr>
+<tr>
+<td> % </td>
+<td align="center"> Used anywhere in a string to match a sequence of zero or more characters (only with LIKE or NOT LIKE) </td>
+<td align="right"> col LIKE "%AT%" (matches "AT", "ATTIC", "CAT" or even "BATS") </td>
+<td> 模糊匹配 </td>
+</tr>
+<tr>
+<td> _ </td>
+<td align="center"> Used anywhere in a string to match a single character (only with LIKE or NOT LIKE) </td>
+<td align="right"> col LIKE "AN_" (matches "AND", but not "AN") </td>
+<td> 模糊匹配单字符 </td>
+</tr>
+<tr>
+<td> IN (…)</td>
+<td align="center">String exists in a list</td>
+<td align="right">col IN ("A", "B", "C")</td>
+<td>在集合</td>
+</tr>
+<tr>
+<td> NOT IN (…)  </td>
+<td align="center">String does not exist in a list</td>
+<td align="right">   co NOT IN ("D", "E", "F")</td>
+<td>不在集合</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>排序(rows)</h1>
+
+<p><code>需要对结果rows排序和筛选部分rows</code></p>
+
+<p><code>select * from table where col &gt; 1 order by col asc limit 2 offset 2</code></p>
+
+<table>
+<thead>
+<tr>
+<th> Operator   </th>
+<th align="center">      Condition      </th>
+<th align="right">  SQL Example </th>
+<th>解释   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> ORDER BY </td>
+<td align="center">  . </td>
+<td align="right"> ORDER BY col ASC/DESC </td>
+<td> 按col排序 </td>
+</tr>
+<tr>
+<td> ASC </td>
+<td align="center"> .  </td>
+<td align="right"> ORDER BY col ASC/DESC </td>
+<td> 升序 </td>
+</tr>
+<tr>
+<td> DESC </td>
+<td align="center"> . </td>
+<td align="right"> ORDER BY col ASC/DESC </td>
+<td> 降序 </td>
+</tr>
+<tr>
+<td> LIMIT OFFSET </td>
+<td align="center">. </td>
+<td align="right"> LIMIT num_limit OFFSET num_offset </td>
+<td> 从offset取limit</td>
+</tr>
+<tr>
+<td>ORDER BY </td>
+<td align="center"> .</td>
+<td align="right"> ORDER BY col1 ASC,col2 DESC</td>
+<td>多列排序</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>join:连表(table)</h1>
+
+<p><code>当查找的数据在多张关联table里</code></p>
+
+<p><code>select * from table1 left join table2 on table1.id = table2.id where col &gt; 1</code></p>
+
+<table>
+<thead>
+<tr>
+<th> Operator   </th>
+<th align="center">      Condition      </th>
+<th align="right">  SQL Example </th>
+<th>解释   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> JOIN .. ON .. </td>
+<td align="center"> .  </td>
+<td align="right"> t1 JOIN t2 ON t1.id = t2.id </td>
+<td> 按ID连成1个表 </td>
+</tr>
+<tr>
+<td> INNER JOIN </td>
+<td align="center"> .</td>
+<td align="right">  t1 INNER JOIN t2 ON t1.id = t2.id </td>
+<td> 只保留id相等的row</td>
+</tr>
+<tr>
+<td> LEFT JOIN </td>
+<td align="center"> .</td>
+<td align="right">  t1 LEFT JOIN t2 ON t1.id = t2.id </td>
+<td> 保留t1的所有row</td>
+</tr>
+<tr>
+<td> RIGHT JOIN </td>
+<td align="center"> .</td>
+<td align="right">  t1 RIGHT JOIN t2 ON t1.id = t2.id </td>
+<td> 保留t2的所有row</td>
+</tr>
+<tr>
+<td>IS/IS NOT NULL </td>
+<td align="center"> . </td>
+<td align="right"> col IS/IS NOT NULL </td>
+<td> col是不是为null</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>算式(select / where)</h1>
+
+<p><code>当需要对select的col 或 where条件的col 经过一定计算后才能使用</code></p>
+
+<p><code>select *,col*2 from table where col/2 &gt; 1</code></p>
+
+<table>
+<thead>
+<tr>
+<th> Operator   </th>
+<th align="center">      Condition      </th>
+<th align="right">  SQL Example </th>
+<th>解释   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> + - * / % </td>
+<td align="center">  . </td>
+<td align="right"> col1 + col2 </td>
+<td> col加减乘除 </td>
+</tr>
+<tr>
+<td> substr</td>
+<td align="center"> . </td>
+<td align="right"> substr(col,0,4) </td>
+<td> 字符串截取 </td>
+</tr>
+<tr>
+<td> AS </td>
+<td align="center"> . </td>
+<td align="right"> col * 2 AS col_new </td>
+<td> col取别名 </td>
+</tr>
+<tr>
+<td> ... </td>
+<td align="center"> </td>
+<td align="right"> </td>
+<td> 还有很多</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>统计（select）</h1>
+
+<p><code>对查找的rows需要按col分组统计的情况</code></p>
+
+<p><code>select count(*),avg(col),col from table where col &gt; 1 group by col</code></p>
+
+<table>
+<thead>
+<tr>
+<th> Operator   </th>
+<th align="center">      Condition      </th>
+<th align="right">  SQL Example </th>
+<th>解释   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COUNT(*), COUNT(column)</td>
+<td align="center"> A common function used to counts the number of rows in the group if no column name is specified. Otherwise, count the number of rows in the group with non-NULL values in the specified column.</td>
+<td align="right"> count(col)</td>
+<td> 计数</td>
+</tr>
+<tr>
+<td>MIN(column)</td>
+<td align="center">   Finds the smallest numerical value in the specified column for all rows in the group.</td>
+<td align="right">min(col)</td>
+<td>最小</td>
+</tr>
+<tr>
+<td>MAX(column)</td>
+<td align="center">   Finds the largest numerical value in the specified column for all rows in the group.</td>
+<td align="right">max(col)</td>
+<td>最大</td>
+</tr>
+<tr>
+<td>AVG(column)</td>
+<td align="center">   Finds the average numerical value in the specified column for all rows in the group.</td>
+<td align="right">avg(col)</td>
+<td>平均</td>
+</tr>
+<tr>
+<td>SUM(column)</td>
+<td align="center">   Finds the sum of all numerical values in the specified column for the rows in the group.</td>
+<td align="right">sum(col)</td>
+<td>求和</td>
+</tr>
+<tr>
+<td>GROUP BY </td>
+<td align="center"> . </td>
+<td align="right"> group by col,col2 </td>
+<td> 分组</td>
+</tr>
+<tr>
+<td>HAVING </td>
+<td align="center"> . </td>
+<td align="right"> HAVING col>100 </td>
+<td> 分组后条件</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>子表 (table)</h1>
+
+<p><code>一次select的结果rows作为下一次select的临时table才能得到最终结果</code></p>
+
+<p><code>select * from (select * from table where col &gt; 1) as tmp
+where col &lt; 1</code></p>
+
+<table>
+<thead>
+<tr>
+<th> Operator   </th>
+<th align="center">      Condition      </th>
+<th align="right">  SQL Example </th>
+<th>解释   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> （select -）as tmp </td>
+<td align="center">   </td>
+<td align="right"> （select -）as tmp </td>
+<td> select结果做子表 </td>
+</tr>
+<tr>
+<td> in（select -） </td>
+<td align="center">   </td>
+<td align="right"> in（select -） </td>
+<td> select结果做条件 </td>
+</tr>
+<tr>
+<td> avg（select -） </td>
+<td align="center">   </td>
+<td align="right"> avg（select -） </td>
+<td> select结果做条件 </td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
